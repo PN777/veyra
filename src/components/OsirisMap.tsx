@@ -367,7 +367,7 @@ function OsirisMap({ data, activeLayers, onEntityClick, onMouseCoords, onRightCl
       maxPitch: 85,
       transformRequest: (url: string) => {
         // Route all CARTO CDN requests through the internal Next.js proxy API
-        if (url.includes('cartocdn.com')) {
+        if (url.includes('cartocdn.com') && process.env.NEXT_PUBLIC_PROXY_TILES === 'true') {
           const baseUrl = typeof window !== 'undefined' ? window.location.origin : '';
           return { url: `${baseUrl}/api/proxy-tiles?url=${encodeURIComponent(url)}` };
         }
@@ -402,6 +402,7 @@ function OsirisMap({ data, activeLayers, onEntityClick, onMouseCoords, onRightCl
       }
     }
     if (!map) return;
+    map.on('error', (e) => console.error('[MapLibre Error Event]', e?.error?.message || e?.error || e));
 
     map.on('load', () => {
       mapRef.current = map;
@@ -936,7 +937,7 @@ function OsirisMap({ data, activeLayers, onEntityClick, onMouseCoords, onRightCl
       map.once('idle', () => onReadyRef.current?.());
       // Dev-only handle. The map is otherwise unreachable from the console,
       // which makes interaction bugs guesswork rather than diagnosis.
-      if (process.env.NODE_ENV === 'development') (window as any).__osirisMap = map;
+      (window as any).__osirisMap = map;
     });
 
     // Events
@@ -1822,6 +1823,7 @@ function OsirisMap({ data, activeLayers, onEntityClick, onMouseCoords, onRightCl
     sizeToContainer.observe(container);
 
     return () => {
+      console.log('[OSIRIS MAP CLEANUP CALLED]');
       sizeToContainer.disconnect();
       cancelAnimationFrame(hoverFrame);
       map.remove();
@@ -2898,7 +2900,7 @@ function OsirisMap({ data, activeLayers, onEntityClick, onMouseCoords, onRightCl
         id: 'directions-line', type: 'line', source: SRC,
         layout: { 'line-cap': 'round', 'line-join': 'round' },
         paint: {
-          'line-color': '#00E5FF',
+          'line-color': '#00D4AA',
           'line-width': ['interpolate', ['linear'], ['zoom'], 5, 2.5, 14, 6],
           'line-opacity': 0.95,
         },
@@ -2909,7 +2911,7 @@ function OsirisMap({ data, activeLayers, onEntityClick, onMouseCoords, onRightCl
         id: 'directions-active-line', type: 'line', source: SRC_ACTIVE,
         layout: { 'line-cap': 'round', 'line-join': 'round' },
         paint: {
-          'line-color': '#D4AF37',
+          'line-color': '#C8A52D',
           'line-width': ['interpolate', ['linear'], ['zoom'], 5, 4, 14, 9],
           'line-opacity': 0.95,
         },
@@ -3256,17 +3258,17 @@ function OsirisMap({ data, activeLayers, onEntityClick, onMouseCoords, onRightCl
       map.addLayer({
         id: 'draw-fill-temp', type: 'fill', source: SRC,
         filter: ['==', ['geometry-type'], 'Polygon'],
-        paint: { 'fill-color': '#00E5FF', 'fill-opacity': 0.12 },
+        paint: { 'fill-color': '#00D4AA', 'fill-opacity': 0.12 },
       });
       map.addLayer({
         id: 'draw-line-temp', type: 'line', source: SRC,
         filter: ['match', ['geometry-type'], ['LineString', 'Polygon'], true, false],
-        paint: { 'line-color': '#00E5FF', 'line-width': 2, 'line-dasharray': [3, 2] },
+        paint: { 'line-color': '#00D4AA', 'line-width': 2, 'line-dasharray': [3, 2] },
       });
       map.addLayer({
         id: 'draw-points-temp', type: 'circle', source: SRC,
         filter: ['==', ['geometry-type'], 'MultiPoint'],
-        paint: { 'circle-color': '#00E5FF', 'circle-radius': 4, 'circle-stroke-width': 1.5, 'circle-stroke-color': '#04040A' },
+        paint: { 'circle-color': '#00D4AA', 'circle-radius': 4, 'circle-stroke-width': 1.5, 'circle-stroke-color': '#04040A' },
       });
     }
 

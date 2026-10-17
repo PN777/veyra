@@ -3,8 +3,8 @@ import ErrorBoundary from '@/components/ErrorBoundary';
 import "./globals.css";
 
 const SITE_URL = "https://osirisai.live";
-const SITE_NAME = "OSIRIS";
-const SITE_TITLE = "OSIRIS — Open Source Intelligence Platform | Live Flight Tracking, CCTV, OSINT Tools & More";
+const SITE_NAME = "VEYRA";
+const SITE_TITLE = "VEYRA — Clarity Across Every Threat.";
 const SITE_DESCRIPTION = "The open-source Palantir alternative. Track live aircraft, satellites, and worldwide CCTV cameras on a 3D globe. Run Nmap scans, DNS lookups, WHOIS queries, SSL cert analysis & threat intelligence — all from your browser. 20+ data sources including live earthquake, wildfire, cyber threat and conflict feeds, plus mapped reference data such as nuclear facilities. Free & open source.";
 
 export const viewport: Viewport = {
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
     default: SITE_TITLE,
-    template: "%s | OSIRIS Intelligence",
+    template: "%s | VEYRA Intelligence",
   },
   description: SITE_DESCRIPTION,
   keywords: [

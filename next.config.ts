@@ -17,7 +17,7 @@ const nextConfig: NextConfig = {
      which is why this only ever shows up on a deploy. Keep standalone
      everywhere except Vercel, so Docker and the platform both get what they
      expect. */
-  output: process.env.VERCEL ? undefined : 'standalone',
+  output: process.env.DOCKER ? 'standalone' : undefined,
   /* onnxruntime-web runs the camera detector for forecasts, and loads its
      WebAssembly engine from its own folder at run time: bundling it would
      move the code away from the engine, so it stays a package, and the

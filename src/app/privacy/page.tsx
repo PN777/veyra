@@ -8,7 +8,7 @@ import {
 export const metadata: Metadata = {
   title: 'Privacy',
   description:
-    'Privacy at OSIRIS, in plain words: no accounts, no tracking, your settings on your device, and exactly which services hear from us when you use a feature.',
+    'Privacy at VEYRA, in plain words: no accounts, no tracking, your settings on your device, and exactly which services hear from us when you use a feature.',
   alternates: { canonical: '/privacy' },
 };
 
@@ -110,14 +110,14 @@ export default function PrivacyPage() {
     <main className="docs-root min-h-screen bg-[var(--bg-primary)] px-5 py-14 text-[var(--text-primary)] sm:px-6">
       <div className="mx-auto max-w-3xl">
         <Link href="/" className="font-mono text-[11px] tracking-widest text-[var(--text-muted)] hover:text-[var(--cyan-primary)]">
-          ← OSIRIS
+          ← VEYRA
         </Link>
 
         <header className="mt-8">
           <p className="font-mono text-[11px] tracking-[0.25em] text-[var(--gold-primary)]">PRIVACY</p>
           <h1 className="mt-2 text-3xl font-bold tracking-wide sm:text-4xl">Privacy, in plain words</h1>
           <p className="mt-4 text-[15px] leading-relaxed text-[var(--text-muted)]">
-            OSIRIS is a window onto public information: flights, ships, cameras, news, markets and more, gathered onto
+            VEYRA is a window onto public information: flights, ships, cameras, news, markets and more, gathered onto
             one map. We built it so you can use it without telling us who you are. This page says what that means in
             practice, and, where a feature needs to ask another service for something, exactly which one.
           </p>

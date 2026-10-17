@@ -285,7 +285,7 @@ async function geminiOverview(mode: Mode, digest: Digest, keys: string[], headli
   try {
     const client = createGeminiClient(rotateApiKey(keys));
     const model = client.getGenerativeModel({
-      model: 'gemini-2.0-flash',
+      model: 'gemini-3.8-flash',
       systemInstruction: mode === 'alerts' ? SYSTEM_ALERTS : SYSTEM_DEFAULT,
     });
     const prompt = [

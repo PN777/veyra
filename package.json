@@ -1,5 +1,5 @@
 {
-  "name": "osiris",
+  "name": "veyra",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -11,7 +11,8 @@
     "lint": "eslint",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:live": "RUN_LIVE_TESTS=1 vitest run"
+    "test:live": "RUN_LIVE_TESTS=1 vitest run",
+    "scanner": "node scanner/server.js"
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
@@ -43,6 +44,7 @@
     "@types/ws": "^8.18.1",
     "eslint": "^9",
     "eslint-config-next": "16.3.4",
+    "playwright": "^1.64.1",
     "tailwindcss": "^4",
     "typescript": "^5",
     "vitest": "^2.1.9"

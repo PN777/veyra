@@ -153,7 +153,7 @@ export default function DocsClient() {
             </svg>
             <span className="flex flex-col leading-none">
               <span className="text-[12px] font-bold tracking-[0.3em] text-[var(--gold-primary)] font-mono">
-                OSIRIS
+                VEYRA
               </span>
               <span className="text-[9px] font-mono tracking-[0.22em] text-[var(--text-muted)] uppercase mt-[3px]">
                 Docs
@@ -269,7 +269,7 @@ export default function DocsClient() {
               <span className="text-[var(--text-heading)]">Build on the</span>
               <br />
               <span className="bg-gradient-to-r from-[var(--gold-primary)] via-[#F0D060] to-[var(--cyan-primary)] bg-clip-text text-transparent">
-                OSIRIS platform
+                VEYRA platform
               </span>
             </h1>
 

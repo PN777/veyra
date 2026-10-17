@@ -77,7 +77,7 @@ interface OsintPanelProps { isOpen?: boolean; onClose?: () => void; isMobile?: b
 /** A recon result as a flat, readable report for a .txt export. */
 function resultsToText(tool: string, query: string, data: unknown): string {
   const lines: string[] = [
-    `OSIRIS RECON — ${tool.toUpperCase()}`,
+    `VEYRA RECON — ${tool.toUpperCase()}`,
     `Target: ${query || '(none)'}`,
     `Exported: ${new Date().toISOString()}`,
     '',
@@ -1599,7 +1599,7 @@ function OsintPanelInner({ isMobile, onSweepVisualize, onScanGeolocate }: OsintP
           <div className="flex items-center justify-between px-6 py-3.5 border-b border-[var(--border-secondary)] bg-[#111] flex-shrink-0">
             <div className="flex items-center gap-3 min-w-0">
               <Radar className="w-5 h-5 text-[var(--cyan-primary)] flex-shrink-0" />
-              <span className="hud-text text-[16px] text-[var(--text-primary)]">OSIRIS RECON TOOLKIT</span>
+              <span className="hud-text text-[16px] text-[var(--text-primary)]">VEYRA RECON TOOLKIT</span>
               <span className="gotham-tag gotham-tag--classified" style={{ fontSize: '9px' }}>{TABS.length} MODULES</span>
               {currentTab && (
                 <>

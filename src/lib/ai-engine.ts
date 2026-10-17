@@ -229,7 +229,7 @@ export async function analyzeIntelligence(
   userQuery: string
 ): Promise<string> {
   const model: GenerativeModel = client.getGenerativeModel({
-    model: 'gemini-2.0-flash',
+    model: 'gemini-3.8-flash',
     systemInstruction: SYSTEM_PROMPT,
   });
 
@@ -257,7 +257,7 @@ export async function generateBriefing(
   context: IntelligenceContext
 ): Promise<string> {
   const model: GenerativeModel = client.getGenerativeModel({
-    model: 'gemini-2.0-flash',
+    model: 'gemini-3.8-flash',
     systemInstruction: SYSTEM_PROMPT,
   });
 

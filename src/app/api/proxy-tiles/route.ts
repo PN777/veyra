@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
+export const dynamic = 'force-dynamic';
+
 export async function GET(request: NextRequest) {
   const url = request.nextUrl.searchParams.get('url');
 
@@ -8,22 +10,19 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    // Only allow cartocdn.com domains to prevent open proxy abuse
     const targetUrl = new URL(url);
     const host = targetUrl.hostname.toLowerCase();
     if (host !== 'cartocdn.com' && !host.endsWith('.cartocdn.com')) {
       return NextResponse.json({ error: 'Forbidden domain' }, { status: 403 });
     }
 
-    const response = await fetch(targetUrl.toString(), { signal: AbortSignal.timeout(15000),
+    const response = await fetch(targetUrl.toString(), {
+      cache: 'no-store',
+      signal: AbortSignal.timeout(15000),
       headers: {
         'Accept': '*/*',
-        'User-Agent': 'Osiris-Tile-Proxy/1.0',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) Osiris-Tile-Proxy/1.0',
       },
-      // Using Next.js fetch cache options to heavily cache tiles locally
-      next: {
-        revalidate: 31536000, // Cache for 1 year
-      }
     });
 
     if (!response.ok) {
@@ -31,8 +30,6 @@ export async function GET(request: NextRequest) {
     }
 
     const data = await response.arrayBuffer();
-    
-    // Forward the content-type from the upstream response
     const contentType = response.headers.get('content-type') || 'application/octet-stream';
 
     return new NextResponse(data, {
@@ -43,7 +40,6 @@ export async function GET(request: NextRequest) {
         'Access-Control-Allow-Origin': '*',
       },
     });
-
   } catch (error) {
     console.error('Tile proxy error:', error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
