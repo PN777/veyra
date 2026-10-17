@@ -78,23 +78,38 @@
 ## Installation & Setup
 
 ### Prerequisites
-- **Node.js**: `v20.x` or later (Node 22+ recommended)
-- **Package Manager**: `npm` (v10+)
-- **GPU / Browser**: Modern browser supporting WebGL2 (Chrome, Firefox, Safari, Edge)
+- **Node.js**: `v20.x` or later (Node 22+ recommended) — [Download Node.js](https://nodejs.org/)
+- **Git**: [Download Git](https://git-scm.com/)
+- **GPU / Browser**: Modern browser supporting WebGL2 (Chrome, Edge, Firefox, Brave)
 
-### 1. Clone the Repository
+---
+
+### Step 1: Download the Project
+
+#### Option A: Clone with Git (Recommended)
 ```bash
-git clone https://github.com/simplifaisoul/osiris.git veyra
+git clone https://github.com/rsaidhanush/veyra.git
 cd veyra
 ```
 
-### 2. Install Dependencies
+#### Option B: Download ZIP Archive
+1. Click the green **Code** button on the GitHub repository.
+2. Select **Download ZIP**.
+3. Extract the ZIP archive to your desired folder.
+4. Open your terminal / PowerShell in that directory:
+   ```powershell
+   cd path/to/extracted/veyra
+   ```
+
+---
+
+### Step 2: Install Dependencies
 ```bash
 npm install
 ```
 
-### 3. Prepare Map Workers
-Generate the offline WebGL worker scripts for MapLibre:
+### Step 3: Prepare Map Workers & Vendors
+Generate the local offline WebGL worker scripts required by MapLibre GL:
 ```bash
 node tools/prepare-map-worker.mjs
 ```
