@@ -349,6 +349,7 @@ function OsirisMap({ data, activeLayers, onEntityClick, onMouseCoords, onRightCl
        fly-in to their city after the splash is a dive, not a spin round the
        planet. This used to open on Bulgaria at zoom 6.5 for everyone. */
     const facingLng = Math.max(-180, Math.min(180, -new Date().getTimezoneOffset() / 4));
+    container.style.backgroundColor = '#020408';
     const baseOptions = {
       container,
       style: styleUrl,
@@ -932,8 +933,8 @@ function OsirisMap({ data, activeLayers, onEntityClick, onMouseCoords, onRightCl
 
 
       setMapReady(true);
-      // 'load' means the style parsed; 'idle' means the tiles are drawn.
-      // The splash waits for the second, so it lifts onto a finished globe.
+      // Ensure splash lifts smoothly onto the already-rendered globe
+      requestAnimationFrame(() => onReadyRef.current?.());
       map.once('idle', () => onReadyRef.current?.());
       // Dev-only handle. The map is otherwise unreachable from the console,
       // which makes interaction bugs guesswork rather than diagnosis.
@@ -2470,7 +2471,7 @@ function OsirisMap({ data, activeLayers, onEntityClick, onMouseCoords, onRightCl
     // Switch to globe and fly to the sweep location
     try {
       applyMapProjection(map, 'globe');
-      map.setSky({ 'sky-color': '#0A0A0F', 'sky-horizon-blend': 0.02, 'horizon-color': '#0A0A0F', 'horizon-fog-blend': 0.02 });
+      map.setSky({ 'sky-color': '#020408', 'sky-horizon-blend': 0.02, 'horizon-color': '#020408', 'horizon-fog-blend': 0.02, 'atmosphere-blend': 0.0 });
     } catch { /* projection may not be supported */ }
 
     map.flyTo({ center: centerCoord, zoom: 14, pitch: 50, bearing: -20, duration: 3000, essential: true });
@@ -2553,12 +2554,13 @@ function OsirisMap({ data, activeLayers, onEntityClick, onMouseCoords, onRightCl
         if (configureSky && map.getPitch() < 0.5) map.easeTo({ pitch: 20, duration: 1200 });
         try {
           if (configureSky) map.setSky({
-            'sky-color': '#04040A',
-            'sky-horizon-blend': 0.5,
-            'horizon-color': '#0a0a1a',
-            'horizon-fog-blend': 0.3,
-            'fog-color': '#04040A',
-            'fog-ground-blend': 0.9,
+            'sky-color': '#020408',
+            'sky-horizon-blend': 0.1,
+            'horizon-color': '#040711',
+            'horizon-fog-blend': 0.1,
+            'fog-color': '#020408',
+            'fog-ground-blend': 0.2,
+            'atmosphere-blend': 0.0,
           });
         } catch (e) { console.warn('[OSIRIS] Suppressed error:', e instanceof Error ? e.message : e); }
       } else {
