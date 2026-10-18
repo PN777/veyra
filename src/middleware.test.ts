@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { readdirSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { config } from './middleware';
+import { config } from './proxy';
 import { version as maplibreVersion } from 'maplibre-gl/package.json';
 
 const vendorDir = fileURLToPath(new URL('../public/vendor/maplibre/', import.meta.url));
