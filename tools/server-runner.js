@@ -1,32 +1,53 @@
-// VEYRA Resilient Production Server Runner
-// Prevents Node 24 process exits from upstream external API timeouts/aborts (NOAA, GDACS, CCTV, RSS)
+// VEYRA 2.0 — Resilient Auto-Restarting Server Supervisor
+// Keeps the local server permanently alive at http://localhost:3000
+const { spawn } = require('child_process');
+const path = require('path');
 
-process.on('uncaughtException', (err) => {
-  console.warn('[VEYRA SERVER UNCAUGHT]', err?.message || err);
-});
+const PORT = process.env.PORT || '3000';
+let activeProcess = null;
+let restartAttempts = 0;
 
-process.on('unhandledRejection', (reason) => {
-  console.warn('[VEYRA SERVER UNHANDLED REJECTION]', reason?.message || reason);
-});
+function launch() {
+  console.log(`[VEYRA SUPERVISOR] Launching production server on port ${PORT}...`);
+  
+  const env = {
+    ...process.env,
+    PORT,
+    NODE_OPTIONS: '--max-old-space-size=4096 --unhandled-rejections=warn',
+  };
 
-const http = require('http');
-const next = require('next');
+  const nextBin = path.join(__dirname, '..', 'node_modules', 'next', 'dist', 'bin', 'next');
 
-const app = next({ dev: false, dir: process.cwd() });
-const handle = app.getRequestHandler();
+  activeProcess = spawn(
+    process.execPath,
+    ['--max-old-space-size=4096', '--unhandled-rejections=warn', nextBin, 'start', '-p', PORT],
+    {
+      cwd: path.join(__dirname, '..'),
+      env,
+      stdio: 'inherit',
+    }
+  );
 
-const PORT = parseInt(process.env.PORT || '3000', 10);
-
-app.prepare().then(() => {
-  const server = http.createServer((req, res) => {
-    handle(req, res);
+  activeProcess.on('error', (err) => {
+    console.error('[VEYRA SUPERVISOR ERROR]', err.message);
   });
 
-  server.listen(PORT, (err) => {
-    if (err) throw err;
-    console.log(`> VEYRA 2.0 Live Server ready at http://localhost:${PORT}`);
+  activeProcess.on('exit', (code, signal) => {
+    restartAttempts++;
+    console.warn(`[VEYRA SUPERVISOR] Next.js process exited (code: ${code}, signal: ${signal}). Auto-restarting attempt #${restartAttempts} in 1500ms...`);
+    setTimeout(launch, 1500);
   });
-}).catch((err) => {
-  console.error('[FATAL SERVER START ERROR]', err);
-  process.exit(1);
+}
+
+// Clean shutdown handlers
+process.on('SIGINT', () => {
+  if (activeProcess) activeProcess.kill('SIGINT');
+  process.exit(0);
 });
+
+process.on('SIGTERM', () => {
+  if (activeProcess) activeProcess.kill('SIGTERM');
+  process.exit(0);
+});
+
+launch();
