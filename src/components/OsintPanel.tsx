@@ -379,7 +379,7 @@ function OsintPanelInner({ isMobile, onSweepVisualize, onScanGeolocate }: OsintP
     if (!payload) return;
     const stamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
     const slug = (query || activeTab).replace(/[^a-z0-9._-]+/gi, '_').slice(0, 40);
-    const base = `osiris-${activeTab}-${slug}-${stamp}`;
+    const base = `veyra-${activeTab}-${slug}-${stamp}`;
     const [body, type, ext] = format === 'json'
       ? [JSON.stringify({ tool: activeTab, query, exported_at: new Date().toISOString(), results: payload }, null, 2), 'application/json', 'json']
       : [resultsToText(activeTab, query, payload), 'text/plain', 'txt'];

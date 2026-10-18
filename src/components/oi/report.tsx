@@ -47,7 +47,7 @@ export function ReportBody({ s, runId, selected, onSelect }: { s: RunState; runI
     const blob = new Blob([toMarkdown(s, url)], { type: 'text/markdown' });
     const a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
-    a.download = `osiris-oi-${(runId ?? 'prediction').slice(0, 8)}.md`;
+    a.download = `veyra-oi-${(runId ?? 'prediction').slice(0, 8)}.md`;
     a.click();
     setTimeout(() => URL.revokeObjectURL(a.href), 1000);
   };

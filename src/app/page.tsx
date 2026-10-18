@@ -941,7 +941,7 @@ export default function Dashboard() {
 
   const handleExportGeoJSON = useCallback(() => {
     downloadFile(
-      `osiris-aoi-${new Date().toISOString().slice(0, 10)}.geojson`,
+      `veyra-aoi-${new Date().toISOString().slice(0, 10)}.geojson`,
       JSON.stringify(shapesToGeoJSON(drawnPolygons), null, 2),
       'application/geo+json',
     );
