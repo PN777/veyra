@@ -2563,6 +2563,10 @@ function OsirisMap({ data, activeLayers, onEntityClick, onMouseCoords, onRightCl
         } catch (e) { console.warn('[OSIRIS] Suppressed error:', e instanceof Error ? e.message : e); }
       } else {
         if (map.getPitch() > 0.5) map.easeTo({ pitch: 0, duration: 350 });
+        // Force layout repaint and tile recalculation on 2D Mercator flat map switch
+        requestAnimationFrame(() => {
+          if (mapRef.current) mapRef.current.resize();
+        });
       }
     } catch (e) {
       console.warn('Projection switch failed:', e);
@@ -2900,7 +2904,7 @@ function OsirisMap({ data, activeLayers, onEntityClick, onMouseCoords, onRightCl
         id: 'directions-line', type: 'line', source: SRC,
         layout: { 'line-cap': 'round', 'line-join': 'round' },
         paint: {
-          'line-color': '#00D4AA',
+          'line-color': '#00DEB9',
           'line-width': ['interpolate', ['linear'], ['zoom'], 5, 2.5, 14, 6],
           'line-opacity': 0.95,
         },
@@ -2911,7 +2915,7 @@ function OsirisMap({ data, activeLayers, onEntityClick, onMouseCoords, onRightCl
         id: 'directions-active-line', type: 'line', source: SRC_ACTIVE,
         layout: { 'line-cap': 'round', 'line-join': 'round' },
         paint: {
-          'line-color': '#C8A52D',
+          'line-color': '#D7AC30',
           'line-width': ['interpolate', ['linear'], ['zoom'], 5, 4, 14, 9],
           'line-opacity': 0.95,
         },

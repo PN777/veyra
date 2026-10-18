@@ -7,26 +7,26 @@
    ═══════════════════════════════════════════════════════════════ */
 
 :root {
-  --gold-rgb: 200, 165, 45;
-  --cyan-rgb: 0, 212, 170;
+  --gold-rgb: 215, 172, 48;
+  --cyan-rgb: 0, 222, 185;
   /* ── Core Palette ── */
-  --bg-void: #030308;
-  --bg-primary: #050509;
-  --bg-secondary: #0A0C16;
-  --bg-tertiary: #101424;
-  --bg-panel: rgba(6, 8, 18, 0.90);
-  --bg-panel-solid: #0A0C16;
+  --bg-void: #030408;
+  --bg-primary: #05060B;
+  --bg-secondary: #0A0D18;
+  --bg-tertiary: #101526;
+  --bg-panel: rgba(7, 10, 22, 0.92);
+  --bg-panel-solid: #0A0D18;
 
-  /* ── Amber Accent ── */
-  --gold-primary: #C8A52D;
-  --gold-light: #E8C850;
-  --gold-dim: #7A6320;
-  --gold-glow: rgba(var(--gold-rgb), 0.3);
+  /* ── Solar Amber Accent ── */
+  --gold-primary: #D7AC30;
+  --gold-light: #F2D25C;
+  --gold-dim: #856A1E;
+  --gold-glow: rgba(var(--gold-rgb), 0.32);
 
-  /* ── Teal Intel Stream ── */
-  --cyan-primary: #00D4AA;
-  --cyan-dim: #005C4A;
-  --cyan-glow: rgba(var(--cyan-rgb), 0.15);
+  /* ── Cyber Teal Intel Stream ── */
+  --cyan-primary: #00DEB9;
+  --cyan-dim: #006352;
+  --cyan-glow: rgba(var(--cyan-rgb), 0.18);
 
   /* ── Alert Colors ── */
   --alert-red: #FF3D3D;
@@ -47,8 +47,8 @@
   --map-sat-navigation: #448aff;
   --map-sat-earth: #90ee90;
   --map-sat-science: #ffd700;
-  --map-sat-other: #00d4aa;
-  --map-flight-civil: #00d4aa;
+  --map-sat-other: #00deb9;
+  --map-flight-civil: #00deb9;
   --map-flight-private: #ffd700;
   --map-flight-gov: #ff9500;
   --map-flight-military: #ff0000;
@@ -68,8 +68,8 @@
   --text-secondary: #9B978E;
   --text-muted: #5C5A54;
   --text-heading: #F5F0E0;
-  --text-gold: #C8A52D;
-  --text-cyan: #00D4AA;
+  --text-gold: #D7AC30;
+  --text-cyan: #00DEB9;
 
   /* ── Scrollbar ── */
   --scrollbar-thumb: rgba(var(--gold-rgb), 0.2);
