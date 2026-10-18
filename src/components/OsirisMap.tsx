@@ -2915,7 +2915,7 @@ function OsirisMap({ data, activeLayers, onEntityClick, onMouseCoords, onRightCl
         id: 'directions-active-line', type: 'line', source: SRC_ACTIVE,
         layout: { 'line-cap': 'round', 'line-join': 'round' },
         paint: {
-          'line-color': '#D7AC30',
+          'line-color': '#00D2FF',
           'line-width': ['interpolate', ['linear'], ['zoom'], 5, 4, 14, 9],
           'line-opacity': 0.95,
         },

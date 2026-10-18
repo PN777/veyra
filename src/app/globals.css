@@ -7,36 +7,36 @@
    ═══════════════════════════════════════════════════════════════ */
 
 :root {
-  --gold-rgb: 215, 172, 48;
-  --cyan-rgb: 0, 222, 185;
+  --gold-rgb: 0, 210, 255;
+  --cyan-rgb: 56, 189, 248;
   /* ── Core Palette ── */
-  --bg-void: #030408;
-  --bg-primary: #05060B;
-  --bg-secondary: #0A0D18;
-  --bg-tertiary: #101526;
-  --bg-panel: rgba(7, 10, 22, 0.92);
-  --bg-panel-solid: #0A0D18;
+  --bg-void: #020408;
+  --bg-primary: #040711;
+  --bg-secondary: #080E1C;
+  --bg-tertiary: #0F172A;
+  --bg-panel: rgba(5, 10, 22, 0.94);
+  --bg-panel-solid: #070D18;
 
-  /* ── Solar Amber Accent ── */
-  --gold-primary: #D7AC30;
-  --gold-light: #F2D25C;
-  --gold-dim: #856A1E;
-  --gold-glow: rgba(var(--gold-rgb), 0.32);
+  /* ── Solar Amber Accent -> Electric Cyan / Crystalline Accent ── */
+  --gold-primary: #00D2FF;
+  --gold-light: #7DD3FC;
+  --gold-dim: #0284C7;
+  --gold-glow: rgba(var(--gold-rgb), 0.35);
 
-  /* ── Cyber Teal Intel Stream ── */
-  --cyan-primary: #00DEB9;
-  --cyan-dim: #006352;
-  --cyan-glow: rgba(var(--cyan-rgb), 0.18);
+  /* ── Cyber Teal Intel Stream -> Ice Blue / Laser Cyan ── */
+  --cyan-primary: #38BDF8;
+  --cyan-dim: #0369A1;
+  --cyan-glow: rgba(var(--cyan-rgb), 0.22);
 
   /* ── Alert Colors ── */
   --alert-red: #FF3D3D;
   --alert-orange: #FF9500;
   --alert-green: #00E676;
-  --alert-blue: #448AFF;
+  --alert-blue: #38BDF8;
 
   /* ── Accent Colors (layer-specific) ── */
-  --accent-weather: #E040FB;
-  --accent-nuclear: #76FF03;
+  --accent-weather: #818CF8;
+  --accent-nuclear: #4ADE80;
 
   /* ── Map Layers ──
      What the map itself draws with. Mirrored in src/lib/map-palette.ts, which
@@ -58,25 +58,25 @@
   --map-oi-neutral: #8c7cff;
 
   /* ── Borders ── */
-  --border-primary: rgba(var(--gold-rgb), 0.15);
+  --border-primary: rgba(var(--gold-rgb), 0.18);
   --border-secondary: rgba(var(--gold-rgb), 0.08);
-  --border-active: rgba(var(--gold-rgb), 0.4);
-  --border-cyan: rgba(var(--cyan-rgb), 0.2);
+  --border-active: rgba(var(--gold-rgb), 0.5);
+  --border-cyan: rgba(var(--cyan-rgb), 0.25);
 
   /* ── Text ── */
-  --text-primary: #E8E6E0;
-  --text-secondary: #9B978E;
-  --text-muted: #5C5A54;
-  --text-heading: #F5F0E0;
-  --text-gold: #D7AC30;
-  --text-cyan: #00DEB9;
+  --text-primary: #F1F5F9;
+  --text-secondary: #94A3B8;
+  --text-muted: #475569;
+  --text-heading: #FFFFFF;
+  --text-gold: #00D2FF;
+  --text-cyan: #38BDF8;
 
   /* ── Scrollbar ── */
-  --scrollbar-thumb: rgba(var(--gold-rgb), 0.2);
-  --scrollbar-thumb-hover: rgba(var(--gold-rgb), 0.4);
+  --scrollbar-thumb: rgba(var(--gold-rgb), 0.25);
+  --scrollbar-thumb-hover: rgba(var(--gold-rgb), 0.5);
 
   /* ── Hover ── */
-  --hover-accent: rgba(var(--gold-rgb), 0.08);
+  --hover-accent: rgba(var(--gold-rgb), 0.09);
 
   /* ── Fonts ── */
   --font-hud: 'JetBrains Mono', 'Courier New', monospace;
@@ -202,23 +202,27 @@ html:has(.docs-root) body {
 .styled-scrollbar { scrollbar-width: thin; scrollbar-color: var(--scrollbar-thumb) transparent; }
 
 /* ═══════════════════════════════════════════════════════════════
-   GLASS PANELS — Premium depth with micro-reflections
+   GLASS PANELS — Premium depth with micro-reflections & sharp geometry
    ═══════════════════════════════════════════════════════════════ */
 .glass-panel {
   background: var(--bg-panel);
-  backdrop-filter: blur(24px) saturate(1.3);
-  -webkit-backdrop-filter: blur(24px) saturate(1.3);
+  backdrop-filter: blur(24px) saturate(1.4);
+  -webkit-backdrop-filter: blur(24px) saturate(1.4);
   border: 1px solid var(--border-primary);
-  border-radius: 14px;
+  border-radius: 10px;
   box-shadow:
-    0 4px 30px rgba(0, 0, 0, 0.5),
-    0 1px 0 rgba(var(--gold-rgb), 0.06) inset,
-    0 -1px 0 rgba(0, 0, 0, 0.3) inset;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    0 8px 32px rgba(0, 0, 0, 0.7),
+    0 1px 0 rgba(var(--gold-rgb), 0.1) inset,
+    0 -1px 0 rgba(0, 0, 0, 0.4) inset;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .glass-panel:hover {
-  border-color: rgba(var(--gold-rgb), 0.22);
+  border-color: rgba(var(--gold-rgb), 0.32);
+  box-shadow:
+    0 12px 36px rgba(0, 0, 0, 0.8),
+    0 0 20px rgba(var(--gold-rgb), 0.1),
+    0 1px 0 rgba(var(--gold-rgb), 0.18) inset;
 }
 
 .glass-panel-sm {
@@ -226,21 +230,21 @@ html:has(.docs-root) body {
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--border-secondary);
-  border-radius: 10px;
+  border-radius: 8px;
 }
 
-/* ── Osiris Gold Glow ── */
+/* ── VEYRA Glow Effects ── */
 .osiris-glow {
   box-shadow:
-    0 0 20px rgba(var(--gold-rgb), 0.12),
-    0 0 60px rgba(var(--gold-rgb), 0.06),
-    0 4px 30px rgba(0, 0, 0, 0.5);
+    0 0 24px rgba(var(--gold-rgb), 0.2),
+    0 0 60px rgba(var(--gold-rgb), 0.08),
+    0 4px 30px rgba(0, 0, 0, 0.6);
 }
 
 .osiris-glow-cyan {
   box-shadow:
-    0 0 20px rgba(var(--cyan-rgb), 0.1),
-    0 0 60px rgba(var(--cyan-rgb), 0.05);
+    0 0 24px rgba(var(--cyan-rgb), 0.18),
+    0 0 60px rgba(var(--cyan-rgb), 0.08);
 }
 
 /* ═══════════════════════════════════════════════════════════════

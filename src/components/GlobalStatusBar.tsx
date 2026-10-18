@@ -144,20 +144,22 @@ export default function GlobalStatusBar({ revealed = true }: { revealed?: boolea
       transition={{ delay: 0.5, duration: 0.6 }}
       className="hidden md:block absolute bottom-0 left-0 right-0 z-[210] pointer-events-none"
     >
-      <div className="h-[28px] overflow-hidden bg-[#0a0a0f]/95 border-t border-white/[0.06] flex items-center text-[10px] font-mono tracking-wider backdrop-blur-xl relative">
+      <div className="h-[28px] overflow-hidden bg-[var(--bg-void)]/95 border-t border-[var(--border-secondary)] flex items-center text-[10px] font-mono tracking-wider backdrop-blur-xl relative">
         {/* Animated scan line */}
         <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[var(--cyan-primary)]/30 to-transparent" style={{ animation: 'hud-scanline 4s linear infinite' }} />
         
         {/* ── LEFT: Social & Community Links ── */}
         <div className="flex-shrink-0 h-full flex items-center pointer-events-auto">
           {/* Discord — highlighted */}
-          <a href="https://discord.gg/EPaFD5FFKf" target="_blank" rel="noopener noreferrer"
+          <a href="https://discord.com/users/nadmin_1560_57383" target="_blank" rel="noopener noreferrer"
+            title="Discord: nadmin_1560_57383"
             className="h-full px-3 flex items-center gap-1.5 bg-[#5865F2]/10 hover:bg-[#5865F2]/25 border-r border-white/[0.04] transition-all duration-200 group"
           >
             <DiscordIcon />
           </a>
           {/* X / Twitter */}
-          <a href="https://x.com/soulsimplifai" target="_blank" rel="noopener noreferrer"
+          <a href="https://x.com/nischal450" target="_blank" rel="noopener noreferrer"
+            title="X: @nischal450"
             className="h-full px-2.5 flex items-center gap-1.5 text-white/40 hover:text-white hover:bg-white/[0.04] border-r border-white/[0.04] transition-all duration-200"
           >
             <XIcon />
