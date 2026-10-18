@@ -48,7 +48,7 @@ export async function GET(req: Request) {
       const val = searchParams.get(key);
       if (val) params.set(key, val);
     }
-    const res = await fetch(`${INTEL_URL}/resolve?${params}`, {
+    const res = await fetch(`${INTEL_URL.replace(/\/+$/, '')}/resolve?${params}`, {
       signal: AbortSignal.timeout(15000),
       headers: { 'X-Forwarded-For': clientIp },
     });

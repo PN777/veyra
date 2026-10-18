@@ -773,4 +773,11 @@ async function boot() {
   });
 }
 
-boot().catch(e => { console.error('[INTEL] Fatal:', e); process.exit(1); });
+module.exports = app;
+
+if (require.main === module) {
+  boot().catch(e => { console.error('[INTEL] Fatal:', e); process.exit(1); });
+} else {
+  // On Vercel / serverless runtime import, initialize sanctions in background
+  loadSanctions().catch(e => console.warn('[INTEL] Initial sanctions load:', e.message));
+}
