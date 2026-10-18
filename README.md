@@ -14,6 +14,12 @@
 
 **A high-performance command dashboard that aggregates live aviation, maritime telemetry, CCTV surveillance feeds, seismic activity, conflict hotspots, turn-by-turn routing, and OSINT threat intelligence onto a GPU-accelerated globe.**
 
+<br />
+
+[![VEYRA 2.0 Interface Preview](./docs/previews/veyra-preview.png)](https://github.com/PN777/veyra)
+
+<br />
+
 ---
 
 [🚀 Quick Start Guide](#-quick-start--judge-evaluation-guide) · [📥 Download Instructions](#-download--setup-instructions) · [🏛 System Architecture](#-system-architecture) · [✨ Core Capabilities](#-core-capabilities) · [🗺 Turn-by-Turn Routing](#-turn-by-turn-navigation--routing) · [⌨ Keyboard Shortcuts](#-keyboard-shortcuts)
